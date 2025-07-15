@@ -1,1 +1,2 @@
 # mkutil
+Make utility automatically!
