@@ -1,0 +1,60 @@
+// JavaScript for {{PAGE_NAME}} module
+// Add your JS code here
+
+// TODO: CHANGE FUNCTION NAME
+// Function to open modal for adding new Data
+function FunctionName() {
+    $("#savechanges").attr("name", "Save");
+    $('.fetched-data').html(""); // Clear modal content
+    $.ajax({
+        type: 'post',
+        url: 'fetch/fetch_{{PAGE_NAME}}.php', // File that contains the form for adding new Data
+        success: function(data) {
+            var $fetched = $('.fetched-data').html(data); // display the form in the modal
+            reactivateFields($fetched); // Activate input fields
+        }
+    });
+}
+
+// TODO: CHANGE FUNCTION NAME
+// Function to open modal for editing Data
+function FunctionName(rowid) {
+    $("#savechanges").attr("name", "Edit");
+    $('.fetched-data').html(""); // Clear modal content
+    $.ajax({
+        type: 'post',
+        data: 'id=' + rowid, // TODO: CHANGE id
+        url: 'fetch/fetch_{{PAGE_NAME}}.php', // File that contains the form for editing Data
+        success: function(data) {
+            var $fetched = $('.fetched-data').html(data); // display the form in the modal
+            reactivateFields($fetched); // Activate input fields
+        }
+    });
+}
+
+// TODO: CHANGE FUNCTION NAME
+// Function for deleting Data
+function FunctionName(rowid) {
+    swal({
+            title: "Are you sure you want to delete this data?",
+            text: "You will not be able to recover this data!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#be172e",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+        },
+        function() {
+            $.ajax({
+                type: 'post',
+                url: '../modules/helper.php?f=FunctionName', // TODO: CHANGE FUNCTION NAME
+                data: {
+                    id: rowid, // TODO: CHANGE id
+                },
+                success: function(data) {
+                    location.reload();
+                }
+            });
+        }
+    );
+}

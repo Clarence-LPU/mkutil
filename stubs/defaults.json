@@ -1,0 +1,8 @@
+{
+	"system_user": "sys_id:hidden,lpu_no:number,fname:text,mname:text,lname:text,email:email,department:select,role:select,status:select",
+	"student": "recid:hidden,student_no:number,fname:text,mname:text,lname:text,email:email,department:select,course:select,status:select",
+	"employee": "recid:hidden,emp_no:number,fname:text,mname:text,lname:text,email:email,department:select,status:select",
+	"department": "dept_id:hidden,code:text,description:text,status:select",
+	"course": "course_id:hidden,course:text,description:text,department:select,status:select",
+	"acadyear": "ays_id:hidden,academic_year:text,semester:select,status:select"
+}

@@ -1,0 +1,11 @@
+<?php
+include "../../includes/init.php";
+$db = DB::getInstance();
+
+if (isset($_POST['Save'])) {
+    // TODO: Add your insert logic here
+}
+
+if (isset($_POST['Edit'])) {
+    // TODO: Add your update logic here
+}
