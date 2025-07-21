@@ -200,6 +200,7 @@ foreach ($fields as $f) {
                                     <div class="form-line">
                                         <select name="{$name}" id="{$name}" class="form-control">
                                             <!-- Add your options here -->
+                                            <option value=""></option>
                                         </select>
                                     </div>
                                 </div>
