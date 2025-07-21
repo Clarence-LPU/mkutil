@@ -358,14 +358,36 @@ foreach ($folders as $folder) {
     }
 }
 
-file_put_contents("$base/{$page_name}.php", $mainTemplate);
-file_put_contents("$base/fetch/fetch-{$page_name}.php", $fetchTemplate);
-file_put_contents("$base/controller/post-{$page_name}.php", $postTemplate);
+function safe_write_file($path, $content) {
+    if (file_exists($path)) {
+        echo "⚠️ File already exists: {$path}\n";
+        echo "   Please delete it first if you want to regenerate it.\n";
+        return false;
+    }
 
-echo "✅ Generated:\n";
-echo "  modules/{$page_name}.php\n";
-echo "  modules/fetch/fetch-{$page_name}.php\n";
-echo "  modules/controller/post-{$page_name}.php\n";
+    if (file_put_contents($path, $content) === false) {
+        echo "❌ Failed to write file: {$path}\n";
+        exit(1);
+    }
+
+    return true;
+}
+
+
+$generatedFiles = [
+    "$base/{$page_name}.php"                        => $mainTemplate,
+    "$base/fetch/fetch-{$page_name}.php"            => $fetchTemplate,
+    "$base/controller/post-{$page_name}.php"        => $postTemplate,
+];
+
+echo "✅ Generation result:\n";
+
+foreach ($generatedFiles as $path => $content) {
+    if (safe_write_file($path, $content)) {
+        echo "  ✔️ {$path}\n";
+    }
+}
+
 echo "You can now implement the logic in the generated files.\n";
 
 ?>
