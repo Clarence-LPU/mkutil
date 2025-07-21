@@ -16,7 +16,7 @@ $db = DB::getInstance();
 
                     <div class="body">
                         <button type="button" class="btn btn-primary waves-effect m-b-20" data-toggle="modal"
-                            data-target="#largeModal" onclick="Add()">
+                            data-target="#largeModal" onclick="addItem('{{PAGE_NAME}}')">
                             <i class="material-icons">add</i>
                             <span>Add New</span>
                         </button>
@@ -47,9 +47,9 @@ $db = DB::getInstance();
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="largeModalLabel">{{TITLE}} Information</h4>
+                    <h4 class="modal-title" id="largeModalLabel">{{TITLE}} INFORMATION</h4>
                 </div>
-                <form id="form_validation" name="{{PAGE_NAME}}_info" action="php/post_{{PAGE_NAME}}.php" method="POST">
+                <form id="form_validation" name="{{PAGE_INFO}}_info" action="controller/post-{{PAGE_NAME}}.php" method="POST">
                     <div class="modal-body">
                         <div class="fetched-data">
                             <!-- Form content will be loaded here via AJAX -->
@@ -68,7 +68,5 @@ $db = DB::getInstance();
         </div>
     </div>
 </section>
-
-<script src="<?= $GLOBALS['INF_CONFIG']['sitehost'] . '/modules/js/{{PAGE_NAME}}.js' ?>"></script>
 
 <?php include "../theme/footer.php"; ?>
